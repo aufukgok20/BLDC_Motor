@@ -1,0 +1,5 @@
+"./main.obj"
+"./BLDC_sysconfig/board.obj"
+"../2837xD_FLASH_lnk_cpu1.cmd"
+"C:/ti/c2000/C2000Ware_4_03_00_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib"
+-llibc.a
