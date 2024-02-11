@@ -4,16 +4,19 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS
+CG_TOOL_ROOT := C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS
 
-GEN_OPTS__FLAG := 
+GEN_OPTS__FLAG := --cmd_file="syscfg/board.opt" --cmd_file="syscfg/c2000ware_libraries.opt" 
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./syscfg/board.obj" \
+"./syscfg/c2000ware_libraries.obj" \
 "./main.obj" \
-"./BLDC_sysconfig/board.obj" \
+"./device/F2837xD_CodeStartBranch.obj" \
+"./device/device.obj" \
 "../2837xD_FLASH_lnk_cpu1.cmd" \
-"C:/ti/c2000/C2000Ware_4_03_00_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib" \
+"C:/ti/c2000/C2000Ware_5_01_00_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib_eabi.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
 
@@ -25,9 +28,9 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
--include BLDC_sysconfig/subdir_vars.mk
+-include device/subdir_vars.mk
 -include subdir_rules.mk
--include BLDC_sysconfig/subdir_rules.mk
+-include device/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -124,45 +127,48 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-BLDC_cpu1.out \
+BLDC_cpu1_v0_0_2.out 
 
 EXE_OUTPUTS__QUOTED += \
-"BLDC_cpu1.out" \
+"BLDC_cpu1_v0_0_2.out" 
 
 BIN_OUTPUTS += \
-BLDC_cpu1.hex \
+BLDC_cpu1_v0_0_2.hex 
 
 BIN_OUTPUTS__QUOTED += \
-"BLDC_cpu1.hex" \
+"BLDC_cpu1_v0_0_2.hex" 
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "BLDC_cpu1.out"
+	@$(MAKE) --no-print-directory -Onone "BLDC_cpu1_v0_0_2.out" secondary-outputs
 
 # Tool invocations
-BLDC_cpu1.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+BLDC_cpu1_v0_0_2.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -O2 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"BLDC_cpu1.map" --stack_size=0x200 --warn_sections -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/lib" -i"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="BLDC_cpu1_linkInfo.xml" --rom_model -o "BLDC_cpu1.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -O2 --advice:performance=all --define=_FLASH --define=CPU1 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"BLDC_cpu1_v0_0_2.map" --stack_size=0x200 --warn_sections -i"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/lib" -i"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="BLDC_cpu1_linkInfo.xml" --entry_point=code_start --rom_model -o "BLDC_cpu1_v0_0_2.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-BLDC_cpu1.hex: $(EXE_OUTPUTS)
+BLDC_cpu1_v0_0_2.hex: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: C2000 Hex Utility'
-	"C:/ti/ccs1210/ccs/tools/compiler/ti-cgt-c2000_22.6.0.LTS/bin/hex2000" --diag_wrap=off -o "BLDC_cpu1.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1260/ccs/tools/compiler/ti-cgt-c2000_22.6.1.LTS/bin/hex2000" --diag_wrap=off -o "BLDC_cpu1_v0_0_2.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "BLDC_sysconfig\board.obj" 
-	-$(RM) "main.d" "BLDC_sysconfig\board.d" 
+	-$(RM) $(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
+	-$(RM) "syscfg\board.obj" "syscfg\c2000ware_libraries.obj" "main.obj" "device\F2837xD_CodeStartBranch.obj" "device\device.obj" 
+	-$(RM) "syscfg\board.d" "syscfg\c2000ware_libraries.d" "main.d" "device\device.d" 
+	-$(RM) "device\F2837xD_CodeStartBranch.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'
 	-@echo ' '
+
+secondary-outputs: $(BIN_OUTPUTS)
 
 .PHONY: all clean dependents
 .SECONDARY:

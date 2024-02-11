@@ -26,9 +26,19 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>driverlib.lib</name>
+			<name>driverlib_eabi.lib</name>
 			<type>1</type>
-			<location>C:/ti/c2000/C2000Ware_4_03_00_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib</location>
+			<locationURI>COM_TI_C2000WARE_SOFTWARE_PACKAGE_INSTALL_DIR/driverlib/f2837xd/driverlib/ccs/Debug/driverlib_eabi.lib</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>C2000WARE_DLIB_ROOT</name>
+			<value>$%7BCOM_TI_C2000WARE_SOFTWARE_PACKAGE_INSTALL_DIR%7D/driverlib/f2837xd/driverlib</value>
+		</variable>
+		<variable>
+			<name>C2000WARE_ROOT</name>
+			<value>$%7BCOM_TI_C2000WARE_SOFTWARE_PACKAGE_INSTALL_DIR%7D</value>
+		</variable>
+	</variableList>
 </projectDescription>

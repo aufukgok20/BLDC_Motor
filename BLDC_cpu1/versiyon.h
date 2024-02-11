@@ -1,28 +1,28 @@
+#ifndef BLDC_PROJE_VERSIYON_H_
+#define BLDC_PROJE_VERSIYON_H_
+
+
+#define VERSIYON "0.0.2"
+#define MAJOR 0
+#define MINOR 0
+#define BUILD 2
 
 
 /*!**************************************************************************************
- *  @Versiyon: 0.0.1
- *  @Tarih: 24/03/2023
+ *  @Versiyon: v0.0.2
+ *  @Tarih: 11/02/2024
  *  @Yazan: Ahmet Ufuk Gok
  *  @Gelistirme Araclari
- *    STM32CubeIDE: 1.10.1
- *    STM32CubeMX : 6.6.1.2
- *    freeRTOS    : v1-FreeRTOS Kernel V10.3.1
- *  @Fonksiyon:
- *  @Aciklama: Initial Komut
- *  @param []
- *  @warning:
- *  @return
+ *    Code Composer Studio: 12.6.0
+ *    Sysconfig : 1.19.0
+ *    C2000ware : 5.01.00.00
+ *
+ *  @Aciklama:
+ *
+ *  - Derlenen ilk versiyondur.
+ *
  ****************************************************************************************/
 
-#ifndef RTOS_PROJE_VERSIYON_H_
-#define RTOS_PROJE_VERSIYON_H_
-
-
-#define VERSIYON "0.0.1"
-#define MAJOR 0
-#define MINOR 0
-#define BUILD 1
 
 /**
  * @Author Ahmet Ufuk Gok (ahmetufukgok@gmail.com)
@@ -34,4 +34,4 @@
  *         Proje olusturuldu.
 */
 
-#endif /* RTOS_PROJE_VERSIYON_H_ */
+#endif /* BLDC_PROJE_VERSIYON_H_ */
